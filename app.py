@@ -250,6 +250,7 @@ with tab_upload:
 
 
 
+
 with tab_draw:
     if "draw_pts" not in st.session_state:
         st.session_state.draw_pts = []
