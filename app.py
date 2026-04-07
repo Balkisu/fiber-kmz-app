@@ -228,15 +228,23 @@ with tab_upload:
             st.session_state.upload_filename = None
             st.rerun()
 
-with tab_manual:
-    st.write("Enter sites below in route order.")
     template = pd.DataFrame([
-        {"SiteID": "T5424", "Site Name": "Biu Road",     "Longitude": "012° 10' 23\" E", "Latitude": "10° 36' 54\" N", "Route Name": "Biu-Little Gombi"},
-        {"SiteID": "T5153", "Site Name": "New layout",   "Longitude": "012° 34' 1\" E",  "Latitude": "10° 23' 56\" N", "Route Name": "Biu-Little Gombi"},
-        {"SiteID": "T5062", "Site Name": "BUK Old Site", "Longitude": 8.47875,            "Latitude": 11.97625,          "Route Name": "BUK-Funtua"},
-        {"SiteID": "T5076", "Site Name": "Gwarzo",       "Longitude": 8.653306,           "Latitude": 12.176472,         "Route Name": "BUK-Funtua"},
+        {"SiteID": "T5424", "Site Name": "Biu Road",     "Longitude": 12.1731,   "Latitude": 10.6150,  "Route Name": "Biu-Little Gombi"},
+        {"SiteID": "T5153", "Site Name": "New layout",   "Longitude": 12.5669,   "Latitude": 10.3989,  "Route Name": "Biu-Little Gombi"},
+        {"SiteID": "T5062", "Site Name": "BUK Old Site", "Longitude": 8.47875,   "Latitude": 11.97625, "Route Name": "BUK-Funtua"},
+        {"SiteID": "T5076", "Site Name": "Gwarzo",       "Longitude": 8.653306,  "Latitude": 12.176472,"Route Name": "BUK-Funtua"},
     ])
-    df_manual_out = st.data_editor(template, num_rows="dynamic", use_container_width=True, key="manual_ed")
+    df_manual_out = st.data_editor(
+        template,
+        num_rows="dynamic",
+        use_container_width=True,
+        key="manual_ed",
+        column_config={
+            "Longitude": st.column_config.NumberColumn("Longitude", format="%.6f"),
+            "Latitude":  st.column_config.NumberColumn("Latitude",  format="%.6f"),
+        }
+    )
+
 
 with tab_draw:
     if "draw_pts" not in st.session_state:
