@@ -229,7 +229,6 @@ with tab_upload:
             st.rerun()
 
     with tab_manual:
-    st.write("Enter sites below in route order.")
     if "manual_df" not in st.session_state:
         st.session_state.manual_df = pd.DataFrame([
             {"SiteID": "T5424", "Site Name": "Biu Road",     "Longitude": 12.1731,   "Latitude": 10.6150,  "Route Name": "Biu-Little Gombi"},
@@ -237,6 +236,7 @@ with tab_upload:
             {"SiteID": "T5062", "Site Name": "BUK Old Site", "Longitude": 8.47875,   "Latitude": 11.97625, "Route Name": "BUK-Funtua"},
             {"SiteID": "T5076", "Site Name": "Gwarzo",       "Longitude": 8.653306,  "Latitude": 12.176472,"Route Name": "BUK-Funtua"},
         ])
+    st.write("Enter sites below in route order.")
     df_manual_out = st.data_editor(
         st.session_state.manual_df,
         num_rows="dynamic",
@@ -247,6 +247,7 @@ with tab_upload:
             "Latitude":  st.column_config.NumberColumn("Latitude",  format="%.6f"),
         }
     )
+
 
 
 with tab_draw:
